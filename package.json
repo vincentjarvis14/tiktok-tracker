@@ -1,0 +1,14 @@
+{
+  "name": "tiktok-tracker",
+  "version": "1.0.0",
+  "description": "TikTok → NocoDB Tracker Chrome Extension",
+  "private": true,
+  "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.10"
+  }
+}

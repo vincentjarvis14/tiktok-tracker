@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "TikTok → NocoDB Tracker",
+  "version": "2.1",
+  "description": "Capture automatiquement les commentaires TikTok et les enregistre dans NocoDB. v2.1 · 26/03/2026",
+  "permissions": ["storage", "tabs", "activeTab", "alarms", "notifications"],
+  "host_permissions": [
+    "https://www.tiktok.com/*",
+    "http://localhost:8080/*",
+    "https://*.tiktokcdn.com/*",
+    "https://*.tiktokcdn-us.com/*",
+    "https://ia801809.us.archive.org/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; img-src 'self' data: https://ia801809.us.archive.org https://*.tiktokcdn.com https://*.tiktokcdn-us.com; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; media-src 'self'"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.tiktok.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js", "icons/bg.mp4", "icons/smoke.mp4"],
+      "matches": ["https://www.tiktok.com/*", "<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "TikTok → NocoDB Tracker",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
